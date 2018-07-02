@@ -44,9 +44,9 @@ const main = app => {
 
 exports.main = (req, res) => {
   console.log('hey there!')
+  console.log(`${req.body}`)
   for (let key of Object.keys(req.body)) {
     console.log(`${key}: ${req.body[key]}`)
   }
-  console.log(`${pro}`)
   res.send('cool')
 }
