@@ -31,26 +31,26 @@ NiCB68KQ3amPhPkotEJQSImPsOAbWFFzpieLywtUJOx5oWDBM7uSVOhZtR7bu3Zw
 mWuck1t4SHHn4nzzC8UH/VVWh/DVro3nyGlOlnX8il46Oc32FikrWlw=
 -----END RSA PRIVATE KEY-----
 `
-}) 
+})
 
-const main = app => {
-  console.log('here!')
+bot.setup(app => {
+  app.on("pull_request.opened", async context => {
+    console.log(`hey there ${context}`)
+    app.log(`hey there ${context}!!`)
+  })
+})
 
-  // app.on("pull_request.opened", async context => {
-  //   console.log(`hey there ${context}`)
-  //   app.log(`hey there ${context}!!`)
-  // })
+function logObject(x) {
+  for (let key of Object.keys(x)) {
+    console.log(`${key}: ${x[key]}`)
+  }
 }
 
-exports.main = (req, res) => {
+exports.main = async (req, res) => {
   console.log('hey there!')
-  console.log(`${req.body}`)
-  for (let key of Object.keys(req.body)) {
-    console.log(`${key}: ${req.body[key]}`)
-  }
-  console.log(`${req.query}`)
-  for (let key of Object.keys(req.query)) {
-    console.log(`${key}: ${req.query[key]}`)
-  }
-  res.send('cool')
+  logObject(req.body)
+  logObject(req.query)
+
+  const response = await bot.receive(req.body)
+  res.send(`response: ${response}`)
 }
