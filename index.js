@@ -35,8 +35,8 @@ mWuck1t4SHHn4nzzC8UH/VVWh/DVro3nyGlOlnX8il46Oc32FikrWlw=
 
 bot.setup(app => {
   app.on("pull_request.opened", async context => {
-    console.log(`hey there ${context}`)
-    app.log(`hey there ${context}!!`)
+    console.log(`PR opened ${context}`)
+    app.log(`PR opened ${context}!!`)
   })
 })
 
