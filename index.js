@@ -48,5 +48,9 @@ exports.main = (req, res) => {
   for (let key of Object.keys(req.body)) {
     console.log(`${key}: ${req.body[key]}`)
   }
+  console.log(`${req.query}`)
+  for (let key of Object.keys(req.query)) {
+    console.log(`${key}: ${req.query[key]}`)
+  }
   res.send('cool')
 }
