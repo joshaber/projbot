@@ -5,5 +5,4 @@ const main = app => {
   })
 }
 
-module.exports = main
 module.exports.main = main
