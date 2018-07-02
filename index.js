@@ -7,4 +7,6 @@ const main = app => {
   // })
 }
 
-module.exports.main = main
+exports.main = (req, res) => {
+  console.log('hey there!')
+}
