@@ -10,5 +10,9 @@
   "license": "ISC",
   "devDependencies": {
     "dotenv": "^6.0.0"
+  },
+  "noodle": {
+    "provider": "gcf",
+    "functionName": "main"
   }
 }
