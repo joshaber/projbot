@@ -14,5 +14,8 @@
   "noodle": {
     "provider": "gcf",
     "functionName": "main"
+  },
+  "dependencies": {
+    "probot": "^7.0.0"
   }
 }
