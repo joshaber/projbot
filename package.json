@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": [
-    "
   ],
   "noodle": {
     "provider": "gcf",
