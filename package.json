@@ -11,11 +11,11 @@
   "devDependencies": {
     "dotenv": "^6.0.0"
   },
+  "dependencies": {
+    "probot": "^7.0.0"
+  },
   "noodle": {
     "provider": "gcf",
     "functionName": "main"
-  },
-  "dependencies": {
-    "probot": "^7.0.0"
   }
 }
