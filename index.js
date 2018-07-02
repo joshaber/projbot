@@ -1,6 +1,6 @@
 const {createProbot} = require('probot')
 
-const pro = createProbot({
+const bot = createProbot({
   id: "14279",
   secret: "deadbeef",
   cert: `-----BEGIN RSA PRIVATE KEY-----
@@ -44,7 +44,9 @@ const main = app => {
 
 exports.main = (req, res) => {
   console.log('hey there!')
-  console.log(`${req}`)
+  for (let key of Object.keys(req.body)) {
+    console.log(`${key}: ${req.body[key]}`)
+  }
   console.log(`${pro}`)
   res.send('cool')
 }
