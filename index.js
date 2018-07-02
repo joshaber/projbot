@@ -1,3 +1,5 @@
+const {createProbot} = require('probot')
+
 const main = app => {
   console.log('here!')
 
@@ -9,4 +11,6 @@ const main = app => {
 
 exports.main = (req, res) => {
   console.log('hey there!')
+  console.log(createProbot)
+  res.send('cool')
 }
