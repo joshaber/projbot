@@ -41,7 +41,7 @@ bot.load(app => {
 })
 
 exports.main = (req, res) => {
-  console.log('we got a request!')
+  console.log('------\nwe got a request!')
 
   const event = req.get('x-github-event') || req.get('X-GitHub-Event')
   const id = req.get('x-github-delivery') || req.get('X-GitHub-Delivery')
