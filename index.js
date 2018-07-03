@@ -48,7 +48,7 @@ bot.load(app => {
 
     return context.github.query(addToProject, {
       contentId: context.payload.pull_request.node_id,
-      projectColumnId: "MDc6UHJvamVjdDE2MjIwNDE="
+      projectColumnId: "MDEzOlByb2plY3RDb2x1bW4yOTgyNjAz"
     }).then(result => {
       for (let k of Object.keys(result)) {
         console.log(`${k}: ${result[k]}`)
