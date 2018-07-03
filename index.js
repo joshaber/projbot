@@ -40,20 +40,8 @@ bot.load(app => {
   })
 })
 
-function logObject(x) {
-  for (let key of Object.keys(x)) {
-    console.log(`${key}: ${x[key]}`)
-  }
-}
-
 exports.main = (req, res) => {
   console.log('we got a request!')
-
-  console.log('body:')
-  logObject(req.body)
-
-  console.log('query')
-  logObject(req.query)
 
   const event = req.get('x-github-event') || req.get('X-GitHub-Event')
   const id = req.get('x-github-delivery') || req.get('X-GitHub-Delivery')
