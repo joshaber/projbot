@@ -59,8 +59,6 @@ exports.main = (req, res) => {
   const id = req.get('x-github-delivery') || req.get('X-GitHub-Delivery')
   console.log(`Received event ${event}${req.body.action ? ('.' + req.body.action) : ''}`)
 
-  res.send('ok')
-
   bot.receive({
     event: event,
     id: id,
