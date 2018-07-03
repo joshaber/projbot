@@ -51,6 +51,8 @@ exports.main = (req, res) => {
   logObject(req.body)
   logObject(req.query)
 
+  res.send('ok')
+
   bot.receive(req.body).then(response => {
     res.send(`response: ${response}`)
   })
