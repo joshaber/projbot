@@ -33,7 +33,7 @@ mWuck1t4SHHn4nzzC8UH/VVWh/DVro3nyGlOlnX8il46Oc32FikrWlw=
 `
 })
 
-bot.setup(app => {
+bot.load(app => {
   app.on("pull_request.opened", context => {
     console.log(`PR opened ${context}`)
     app.log(`PR opened ${context}!!`)
