@@ -48,6 +48,11 @@ bot.load(app => {
     return context.github.query(addToProject, {
       contentId: context.payload.pull_request.node_id,
       projectColumnId: "MDc6UHJvamVjdDE2MjIwNDE="
+    }).then(result => {
+      for (let k of Object.keys(result)) {
+        console.log(`${k}: ${result[k]}`)
+      }
+      return 'ok'
     })
   })
 })
@@ -63,11 +68,11 @@ exports.main = (req, res) => {
     event: event,
     id: id,
     payload: req.body
-  }).then(() => {
+  }).then(result => {
     res.send({
       statusCode: 200,
       body: JSON.stringify({
-        message: 'Executed'
+        message: result
       })
     })
   })
