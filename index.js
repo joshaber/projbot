@@ -34,7 +34,7 @@ mWuck1t4SHHn4nzzC8UH/VVWh/DVro3nyGlOlnX8il46Oc32FikrWlw=
 })
 
 bot.setup(app => {
-  app.on("pull_request.opened", async context => {
+  app.on("pull_request.opened", context => {
     console.log(`PR opened ${context}`)
     app.log(`PR opened ${context}!!`)
   })
@@ -46,11 +46,12 @@ function logObject(x) {
   }
 }
 
-exports.main = async (req, res) => {
+exports.main = (req, res) => {
   console.log('hey there!')
   logObject(req.body)
   logObject(req.query)
 
-  const response = await bot.receive(req.body)
-  res.send(`response: ${response}`)
+  bot.receive(req.body).then(response => {
+    res.send(`response: ${response}`)
+  })
 }
