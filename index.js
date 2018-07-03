@@ -33,10 +33,22 @@ mWuck1t4SHHn4nzzC8UH/VVWh/DVro3nyGlOlnX8il46Oc32FikrWlw=
 `
 })
 
+const addToProject = `
+  mutation($contentId: ID!, $projectColumnId: ID!) {
+    addProjectCard(input: {contentId: $contentId, projectColumnId: $projectColumnId}) {
+      clientMutationId
+    }
+  }
+`
+
 bot.load(app => {
   app.on(["pull_request.opened", "pull_request.reopened"], context => {
     console.log(`PR opened!! ${context}`)
-    app.log(`PR opened! ${context}!!`)
+
+    return context.github.query(addToProject, {
+      contentId: context.payload.pull_request.node_id,
+      projectColumnId: "MDc6UHJvamVjdDE2MjIwNDE="
+    })
   })
 })
 
