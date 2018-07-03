@@ -41,6 +41,7 @@ const addToProject = `
   }
 `
 
+let response = 'no'
 bot.load(app => {
   app.on(["pull_request.opened", "pull_request.reopened"], context => {
     console.log(`PR opened!! ${context}`)
@@ -52,13 +53,17 @@ bot.load(app => {
       for (let k of Object.keys(result)) {
         console.log(`${k}: ${result[k]}`)
       }
+      response = 'ok'
       return 'ok'
+    }).catch(err => {
+      response = err.toString()
     })
   })
 })
 
 exports.main = (req, res) => {
-  console.log("------\nwe got a request!")
+  console.log("------")
+  console.log("we got a request!")
 
   const event = req.get('x-github-event') || req.get('X-GitHub-Event')
   const id = req.get('x-github-delivery') || req.get('X-GitHub-Delivery')
@@ -72,7 +77,7 @@ exports.main = (req, res) => {
     res.send({
       statusCode: 200,
       body: JSON.stringify({
-        message: result
+        message: response
       })
     })
   })
