@@ -47,13 +47,30 @@ function logObject(x) {
 }
 
 exports.main = (req, res) => {
-  console.log('hey there!')
+  console.log('we got a request!')
+
+  console.log('body:')
   logObject(req.body)
+
+  console.log('query')
   logObject(req.query)
+
+  const event = req.get('x-github-event') || req.get('X-GitHub-Event')
+  const id = req.get('x-github-delivery') || req.get('X-GitHub-Delivery')
+  console.log(`Received event ${event}${req.body.action ? ('.' + req.body.action) : ''}`)
 
   res.send('ok')
 
-  bot.receive(req.body).then(response => {
-    res.send(`response: ${response}`)
+  bot.receive({
+    event: event,
+    id: id,
+    payload: req.body
+  }).then(() => {
+    res.send({
+      statusCode: 200,
+      body: JSON.stringify({
+        message: 'Executed'
+      })
+    })
   })
 }
